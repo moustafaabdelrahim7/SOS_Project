@@ -235,14 +235,6 @@ enu_sos_status_t SOS_create_task (str_task_control_data_t *strPtr_task_control_d
 		 enu_sg_sos_init_status==SOS_FLAG_INITIALIZED && strPtrs_tasks[strPtr_task_control_data->u8_task_id]->Fptr_task_callBack==NULL)
 		{
 			strPtrs_tasks[strPtr_task_control_data->u8_task_id]                        =strPtr_task_control_data;
-/*
-			strPtrs_tasks[strPtr_task_control_data->u8_task_id]->u8_task_priority      =strPtr_task_control_data->u8_task_priority;
-			strPtrs_tasks[strPtr_task_control_data->u8_task_id]->u8_task_id            =strPtr_task_control_data->u8_task_id;
-			strPtrs_tasks[strPtr_task_control_data->u8_task_id]->u16_task_priodic_time =strPtr_task_control_data->u16_task_priodic_time;
-			strPtrs_tasks[strPtr_task_control_data->u8_task_id]->Fptr_task_callBack    =strPtr_task_control_data->Fptr_task_callBack;
-			strPtrs_tasks[strPtr_task_control_data->u8_task_id]->enu_task_state		   =strPtr_task_control_data->enu_task_state;*/
-
-			
 		}
 		else
 		{

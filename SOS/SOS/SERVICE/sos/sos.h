@@ -66,6 +66,7 @@ typedef struct {
 	uint8_t					 u8_task_priority;
 	uint8_t					 u8_task_id;
 	uint16_t				u16_task_priodic_time;
+	enu_task_state_t           enu_task_state;
 	Fptr_task_callBack_t	Fptr_task_callBack;
 }str_task_control_data_t;
 

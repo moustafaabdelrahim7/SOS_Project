@@ -36,7 +36,7 @@
   <documentation help="" />
   <offline-documentation help="" />
   <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.34.1" />
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
   </dependencies>
 </framework-data>
     </AsfFrameworkConfig>
@@ -205,34 +205,34 @@
     <Compile Include="SERVICE\sos\sos_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\bit_math.h">
+    <Compile Include="STD_LIBRARIES\bit_math.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\ex_int_manger\ex_int_manger.c">
+    <Compile Include="STD_LIBRARIES\ex_int_manger\ex_int_manger.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\ex_int_manger\ex_int_manger.h">
+    <Compile Include="STD_LIBRARIES\ex_int_manger\ex_int_manger.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\ex_int_manger\ex_int_manger_config.c">
+    <Compile Include="STD_LIBRARIES\ex_int_manger\ex_int_manger_config.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\ex_int_manger\ex_int_manger_config.h">
+    <Compile Include="STD_LIBRARIES\ex_int_manger\ex_int_manger_config.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\STD_TYPES.h">
+    <Compile Include="STD_LIBRARIES\STD_TYPES.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\timer_manager\timer_manager.c">
+    <Compile Include="STD_LIBRARIES\timer_manager\timer_manager.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\timer_manager\timer_manager.h">
+    <Compile Include="STD_LIBRARIES\timer_manager\timer_manager.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\timer_manager\timer_manger_config.c">
+    <Compile Include="STD_LIBRARIES\timer_manager\timer_manger_config.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Helpers\timer_manager\timer_manger_config.h">
+    <Compile Include="STD_LIBRARIES\timer_manager\timer_manger_config.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
@@ -247,9 +247,9 @@
     <Folder Include="MCAL\timer\" />
     <Folder Include="SERVICE" />
     <Folder Include="SERVICE\sos" />
-    <Folder Include="Helpers" />
-    <Folder Include="Helpers\ex_int_manger" />
-    <Folder Include="Helpers\timer_manager" />
+    <Folder Include="STD_LIBRARIES" />
+    <Folder Include="STD_LIBRARIES\ex_int_manger" />
+    <Folder Include="STD_LIBRARIES\timer_manager" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
