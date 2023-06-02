@@ -5,7 +5,7 @@
  *  Author: Mcs
  */ 
 #include "app.h"
-#include "../SERVICE/sos/sos_config.h"
+#include "../SERVICE/sos/sos_tasks.h"
 #include "../HAL/led/led_config.h"
 #include "../STD_LIBRARIES/ex_int_manger/ex_int_manger_config.h"
 
@@ -13,6 +13,7 @@
 
 static Std_ReturnType enu_sg_ret;
 volatile static uint16_t u8_sg_counter;
+
 
 
 static void Start_sos_handler(void)
@@ -39,7 +40,7 @@ static void task_2_handler(void)
 	u8_sg_counter++;
 }
 
-void APP_init()
+Std_ReturnType APP_init()
 {
 	GLOBAL_InterruptEnable();
 	
@@ -47,34 +48,40 @@ void APP_init()
 	if(SOS_E_NOK==enu_sg_ret)
 	{
 		// handle TASK fail initialization
+		return enu_sg_ret;
 	}
 	enu_sg_ret = LED_initialize(&st_g_led0_instance);
 	if(E_NOT_OK==enu_sg_ret)
 	{
 		// handle led fail initialization
+		return enu_sg_ret;
 	}
 	enu_sg_ret |= LED_initialize(&st_g_led1_instance);
 	if(E_NOT_OK==enu_sg_ret)
 	{
 		// handle led fail initialization
+		return enu_sg_ret;
 	}
 	str_g_task_1_.Fptr_task_callBack = task_1_handler;
 	enu_sg_ret |=SOS_create_task(&str_g_task_1_);
 	if(SOS_E_NOK==enu_sg_ret)
 	{
 		// handle TASK fail initialization
+		return enu_sg_ret;
 	}
 	str_g_task_2_.Fptr_task_callBack = task_2_handler;
 	enu_sg_ret |=SOS_create_task(&str_g_task_2_);
 	if(SOS_E_NOK==enu_sg_ret)
 	{
 		// handle TASK fail initialization
+		return enu_sg_ret;
 	}
 /********************************************External interrupt for start & stop SOS********************************************************************/
        enu_sg_ret|= EXT_INTx_setCallBack_manger(&Start_sos_handler,INTERRUPT_EXTERNAL_INT0);
 	   if (enu_sg_ret==E_NOT_OK)
 	   {
 		   // handle External interrupt fail set callback function 
+		   return enu_sg_ret;
 	   }
 	   else
 	   {
@@ -84,6 +91,7 @@ void APP_init()
 	    if (enu_sg_ret==E_NOT_OK)
 	    {
 		    // handle External interrupt fail initialization
+			return enu_sg_ret;
 	    }
 		else
 		{
@@ -93,6 +101,7 @@ void APP_init()
 		if (enu_sg_ret==E_NOT_OK)
 		{
 			// handle External interrupt fail set callback function
+			return enu_sg_ret;
 		}
 		else
 		{
@@ -102,6 +111,7 @@ void APP_init()
 		if (enu_sg_ret==E_NOT_OK)
 		{
 			// handle External interrupt fail initialization
+			return enu_sg_ret;
 		}
 		else
 		{
@@ -112,7 +122,14 @@ void APP_init()
 
 void APP_start()
 {	
+	if (enu_sg_ret!=E_NOT_OK)
+	{
 		SOS_run();
+	}
+	else
+	{
+		//do nothing
+	}
 }
 
 

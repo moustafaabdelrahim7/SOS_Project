@@ -77,18 +77,18 @@ Discarded input sections
  .text.SOS_deinit
                 0x00000000       0x42 SERVICE/sos/sos.o
  .text.SOS_modify_task
-                0x00000000       0x80 SERVICE/sos/sos.o
+                0x00000000       0x88 SERVICE/sos/sos.o
  .text.SOS_delete_task
                 0x00000000       0x70 SERVICE/sos/sos.o
  .bss.u8_sg_sos_time_counter_2_
                 0x00000000        0x4 SERVICE/sos/sos.o
  .bss.u8_sg_sos_time_counter
                 0x00000000        0x4 SERVICE/sos/sos.o
- .text          0x00000000        0x0 SERVICE/sos/sos_config.o
- .data          0x00000000        0x0 SERVICE/sos/sos_config.o
- .bss           0x00000000        0x0 SERVICE/sos/sos_config.o
+ .text          0x00000000        0x0 SERVICE/sos/sos_tasks.o
+ .data          0x00000000        0x0 SERVICE/sos/sos_tasks.o
+ .bss           0x00000000        0x0 SERVICE/sos/sos_tasks.o
  .data.str_g_task_3_
-                0x00000000        0x7 SERVICE/sos/sos_config.o
+                0x00000000        0x7 SERVICE/sos/sos_tasks.o
  .text          0x00000000        0x0 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
  .data          0x00000000        0x0 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
  .bss           0x00000000        0x0 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
@@ -193,7 +193,7 @@ LOAD MCAL/dio/dio.o
 LOAD MCAL/exti/external_interrupt.h.o
 LOAD MCAL/timer/timer.o
 LOAD SERVICE/sos/sos.o
-LOAD SERVICE/sos/sos_config.o
+LOAD SERVICE/sos/sos_tasks.o
 LOAD STD_LIBRARIES/ex_int_manger/ex_int_manger.o
 LOAD STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
 LOAD STD_LIBRARIES/timer_manager/timer_manager.o
@@ -307,7 +307,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1050
+.text           0x00000000     0x1084
  *(.vectors)
  .vectors       0x00000000       0x54 C:/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
                 0x00000000                __vector_default
@@ -394,110 +394,110 @@ END GROUP
  .text.task_1_handler
                 0x000000f6        0xa APP/app.o
  .text.APP_init
-                0x00000100       0xbc APP/app.o
+                0x00000100       0xe8 APP/app.o
                 0x00000100                APP_init
  .text.APP_start
-                0x000001bc        0x6 APP/app.o
-                0x000001bc                APP_start
+                0x000001e8        0xc APP/app.o
+                0x000001e8                APP_start
  .text.LED_initialize
-                0x000001c2       0x52 HAL/led/led.o
-                0x000001c2                LED_initialize
+                0x000001f4       0x52 HAL/led/led.o
+                0x000001f4                LED_initialize
  .text.LED_turn_toggle
-                0x00000214       0x24 HAL/led/led.o
-                0x00000214                LED_turn_toggle
- .text.main     0x00000238        0xe main.o
-                0x00000238                main
+                0x00000246       0x24 HAL/led/led.o
+                0x00000246                LED_turn_toggle
+ .text.main     0x0000026a        0xe main.o
+                0x0000026a                main
  .text.DIO_pin_direction_intialize
-                0x00000246       0x80 MCAL/dio/dio.o
-                0x00000246                DIO_pin_direction_intialize
+                0x00000278       0x80 MCAL/dio/dio.o
+                0x00000278                DIO_pin_direction_intialize
  .text.DIO_pin_write_logic
-                0x000002c6       0x82 MCAL/dio/dio.o
-                0x000002c6                DIO_pin_write_logic
+                0x000002f8       0x82 MCAL/dio/dio.o
+                0x000002f8                DIO_pin_write_logic
  .text.DIO_pin_toggle_logic
-                0x00000348       0x4a MCAL/dio/dio.o
-                0x00000348                DIO_pin_toggle_logic
+                0x0000037a       0x4a MCAL/dio/dio.o
+                0x0000037a                DIO_pin_toggle_logic
  .text.__vector_1
-                0x00000392       0x58 MCAL/exti/external_interrupt.h.o
-                0x00000392                __vector_1
+                0x000003c4       0x58 MCAL/exti/external_interrupt.h.o
+                0x000003c4                __vector_1
  .text.__vector_2
-                0x000003ea       0x58 MCAL/exti/external_interrupt.h.o
-                0x000003ea                __vector_2
+                0x0000041c       0x58 MCAL/exti/external_interrupt.h.o
+                0x0000041c                __vector_2
  .text.__vector_3
-                0x00000442       0x58 MCAL/exti/external_interrupt.h.o
-                0x00000442                __vector_3
+                0x00000474       0x58 MCAL/exti/external_interrupt.h.o
+                0x00000474                __vector_3
  .text.EXT_INTx_setCallBack
-                0x0000049a       0x44 MCAL/exti/external_interrupt.h.o
-                0x0000049a                EXT_INTx_setCallBack
+                0x000004cc       0x44 MCAL/exti/external_interrupt.h.o
+                0x000004cc                EXT_INTx_setCallBack
  .text.EXT_INTx_setEdgeType
-                0x000004de       0xf0 MCAL/exti/external_interrupt.h.o
-                0x000004de                EXT_INTx_setEdgeType
+                0x00000510       0xf0 MCAL/exti/external_interrupt.h.o
+                0x00000510                EXT_INTx_setEdgeType
  .text.EXT_INTx_Init
-                0x000005ce       0xd2 MCAL/exti/external_interrupt.h.o
-                0x000005ce                EXT_INTx_Init
+                0x00000600       0xd2 MCAL/exti/external_interrupt.h.o
+                0x00000600                EXT_INTx_Init
  .text.__vector_11
-                0x000006a0       0x60 MCAL/timer/timer.o
-                0x000006a0                __vector_11
+                0x000006d2       0x60 MCAL/timer/timer.o
+                0x000006d2                __vector_11
  .text.__vector_9
-                0x00000700       0x60 MCAL/timer/timer.o
-                0x00000700                __vector_9
+                0x00000732       0x60 MCAL/timer/timer.o
+                0x00000732                __vector_9
  .text.__vector_5
-                0x00000760       0x60 MCAL/timer/timer.o
-                0x00000760                __vector_5
+                0x00000792       0x60 MCAL/timer/timer.o
+                0x00000792                __vector_5
  .text.TIMER_init
-                0x000007c0      0x11a MCAL/timer/timer.o
-                0x000007c0                TIMER_init
+                0x000007f2      0x11a MCAL/timer/timer.o
+                0x000007f2                TIMER_init
  .text.TIMER_start
-                0x000008da      0x298 MCAL/timer/timer.o
-                0x000008da                TIMER_start
+                0x0000090c      0x298 MCAL/timer/timer.o
+                0x0000090c                TIMER_start
  .text.TIMER_stop
-                0x00000b72       0x5a MCAL/timer/timer.o
-                0x00000b72                TIMER_stop
+                0x00000ba4       0x5a MCAL/timer/timer.o
+                0x00000ba4                TIMER_stop
  .text.TIMER_reset
-                0x00000bcc       0x50 MCAL/timer/timer.o
-                0x00000bcc                TIMER_reset
+                0x00000bfe       0x50 MCAL/timer/timer.o
+                0x00000bfe                TIMER_reset
  .text.TIMER_setCallBack
-                0x00000c1c       0x44 MCAL/timer/timer.o
-                0x00000c1c                TIMER_setCallBack
+                0x00000c4e       0x44 MCAL/timer/timer.o
+                0x00000c4e                TIMER_setCallBack
  .text.init_theArrayOfIDs
-                0x00000c60       0x7a SERVICE/sos/sos.o
+                0x00000c92       0x7a SERVICE/sos/sos.o
  .text.SOS_timer_handelr
-                0x00000cda       0x90 SERVICE/sos/sos.o
+                0x00000d0c       0x90 SERVICE/sos/sos.o
  .text.SOS_init
-                0x00000d6a       0x4a SERVICE/sos/sos.o
-                0x00000d6a                SOS_init
+                0x00000d9c       0x4a SERVICE/sos/sos.o
+                0x00000d9c                SOS_init
  .text.SOS_disable
-                0x00000db4       0x1e SERVICE/sos/sos.o
-                0x00000db4                SOS_disable
- .text.SOS_run  0x00000dd2      0x14c SERVICE/sos/sos.o
-                0x00000dd2                SOS_run
+                0x00000de6       0x20 SERVICE/sos/sos.o
+                0x00000de6                SOS_disable
+ .text.SOS_run  0x00000e06      0x14c SERVICE/sos/sos.o
+                0x00000e06                SOS_run
  .text.SOS_create_task
-                0x00000f1e       0x5c SERVICE/sos/sos.o
-                0x00000f1e                SOS_create_task
+                0x00000f52       0x5c SERVICE/sos/sos.o
+                0x00000f52                SOS_create_task
  .text.EXT_INTx_setCallBack_manger
-                0x00000f7a       0x16 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
-                0x00000f7a                EXT_INTx_setCallBack_manger
+                0x00000fae       0x16 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+                0x00000fae                EXT_INTx_setCallBack_manger
  .text.EXT_INTx_Init_manger
-                0x00000f90       0x1a STD_LIBRARIES/ex_int_manger/ex_int_manger.o
-                0x00000f90                EXT_INTx_Init_manger
+                0x00000fc4       0x1a STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+                0x00000fc4                EXT_INTx_Init_manger
  .text.TIMER_Manager_init
-                0x00000faa       0x40 STD_LIBRARIES/timer_manager/timer_manager.o
-                0x00000faa                TIMER_Manager_init
+                0x00000fde       0x40 STD_LIBRARIES/timer_manager/timer_manager.o
+                0x00000fde                TIMER_Manager_init
  .text.TIMER_Manager_start
-                0x00000fea       0x24 STD_LIBRARIES/timer_manager/timer_manager.o
-                0x00000fea                TIMER_Manager_start
+                0x0000101e       0x24 STD_LIBRARIES/timer_manager/timer_manager.o
+                0x0000101e                TIMER_Manager_start
  .text.TIMER_Manager_stop
-                0x0000100e        0xe STD_LIBRARIES/timer_manager/timer_manager.o
-                0x0000100e                TIMER_Manager_stop
+                0x00001042        0xe STD_LIBRARIES/timer_manager/timer_manager.o
+                0x00001042                TIMER_Manager_stop
  .text.TIMER_Manager_reset
-                0x0000101c       0x24 STD_LIBRARIES/timer_manager/timer_manager.o
-                0x0000101c                TIMER_Manager_reset
- .text.libgcc   0x00001040        0xc c:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x00001040                __tablejump2__
-                0x0000104c                . = ALIGN (0x2)
+                0x00001050       0x24 STD_LIBRARIES/timer_manager/timer_manager.o
+                0x00001050                TIMER_Manager_reset
+ .text.libgcc   0x00001074        0xc c:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                0x00001074                __tablejump2__
+                0x00001080                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000104c        0x0 c:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000104c                _exit
-                0x0000104c                exit
+ .fini9         0x00001080        0x0 c:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001080                _exit
+                0x00001080                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -516,11 +516,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000104c        0x4 c:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001080        0x4 c:/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001050                _etext = .
+                0x00001084                _etext = .
 
-.data           0x00800060       0x32 load address 0x00001050
+.data           0x00800060       0x30 load address 0x00001084
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -533,77 +533,73 @@ END GROUP
  .data.Start_Flag
                 0x00800066        0x1 SERVICE/sos/sos.o
                 0x00800066                Start_Flag
- .data.u8_sg_sos_enable_flag
-                0x00800067        0x1 SERVICE/sos/sos.o
-                0x00800067                u8_sg_sos_enable_flag
  .data.str_g_task_2_
-                0x00800068        0x7 SERVICE/sos/sos_config.o
-                0x00800068                str_g_task_2_
+                0x00800067        0x7 SERVICE/sos/sos_tasks.o
+                0x00800067                str_g_task_2_
  .data.str_g_task_1_
-                0x0080006f        0x7 SERVICE/sos/sos_config.o
-                0x0080006f                str_g_task_1_
- .data.s_INT1   0x00800076        0x2 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
-                0x00800076                s_INT1
- .data.s_INT0   0x00800078        0x2 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
-                0x00800078                s_INT0
+                0x0080006e        0x7 SERVICE/sos/sos_tasks.o
+                0x0080006e                str_g_task_1_
+ .data.s_INT1   0x00800075        0x2 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
+                0x00800075                s_INT1
+ .data.s_INT0   0x00800077        0x2 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
+                0x00800077                s_INT0
  .data.st_g_sos_timer
-                0x0080007a        0x7 STD_LIBRARIES/timer_manager/timer_manger_config.o
-                0x0080007a                st_g_sos_timer
+                0x00800079        0x7 STD_LIBRARIES/timer_manager/timer_manger_config.o
+                0x00800079                st_g_sos_timer
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  .rodata.port_registers
-                0x00800081        0x8 MCAL/dio/dio.o
+                0x00800080        0x8 MCAL/dio/dio.o
  .rodata.ddr_registers
-                0x00800089        0x8 MCAL/dio/dio.o
+                0x00800088        0x8 MCAL/dio/dio.o
  *(.gnu.linkonce.r*)
-                0x00800092                . = ALIGN (0x2)
- *fill*         0x00800091        0x1 
-                0x00800092                _edata = .
-                0x00800092                PROVIDE (__data_end, .)
+                0x00800090                . = ALIGN (0x2)
+                0x00800090                _edata = .
+                0x00800090                PROVIDE (__data_end, .)
 
-.bss            0x00800092       0x2d
-                0x00800092                PROVIDE (__bss_start, .)
+.bss            0x00800090       0x2d
+                0x00800090                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  .bss.u8_sg_counter
-                0x00800092        0x2 APP/app.o
+                0x00800090        0x2 APP/app.o
  .bss.enu_sg_ret
-                0x00800094        0x1 APP/app.o
+                0x00800092        0x1 APP/app.o
  .bss.g_EXT_INT2_fptr
-                0x00800095        0x2 MCAL/exti/external_interrupt.h.o
+                0x00800093        0x2 MCAL/exti/external_interrupt.h.o
  .bss.g_EXT_INT1_fptr
-                0x00800097        0x2 MCAL/exti/external_interrupt.h.o
+                0x00800095        0x2 MCAL/exti/external_interrupt.h.o
  .bss.g_EXT_INT0_fptr
-                0x00800099        0x2 MCAL/exti/external_interrupt.h.o
+                0x00800097        0x2 MCAL/exti/external_interrupt.h.o
  .bss.sg_Timer2_callBackPtr
-                0x0080009b        0x2 MCAL/timer/timer.o
+                0x00800099        0x2 MCAL/timer/timer.o
  .bss.sg_Timer1_callBackPtr
-                0x0080009d        0x2 MCAL/timer/timer.o
+                0x0080009b        0x2 MCAL/timer/timer.o
  .bss.sg_Timer0_callBackPtr
-                0x0080009f        0x2 MCAL/timer/timer.o
+                0x0080009d        0x2 MCAL/timer/timer.o
  .bss.u8Arr_sg_ID_of_taskPriorty
-                0x008000a1        0x3 SERVICE/sos/sos.o
+                0x0080009f        0x3 SERVICE/sos/sos.o
  .bss.uintu8_sg_sos_index_2
-                0x008000a4        0x4 SERVICE/sos/sos.o
+                0x008000a2        0x4 SERVICE/sos/sos.o
  .bss.uintu8_sg_sos_index_1
-                0x008000a8        0x4 SERVICE/sos/sos.o
+                0x008000a6        0x4 SERVICE/sos/sos.o
  .bss.u8Arr_sg__of_taskCounters
-                0x008000ac        0xc SERVICE/sos/sos.o
+                0x008000aa        0xc SERVICE/sos/sos.o
  .bss.strPtrs_tasks
-                0x008000b8        0x6 SERVICE/sos/sos.o
+                0x008000b6        0x6 SERVICE/sos/sos.o
  .bss.enu_sg_sos_init_status
-                0x008000be        0x1 SERVICE/sos/sos.o
+                0x008000bc        0x1 SERVICE/sos/sos.o
  *(COMMON)
-                0x008000bf                PROVIDE (__bss_end, .)
-                0x00001050                __data_load_start = LOADADDR (.data)
-                0x00001082                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x008000bd                PROVIDE (__bss_end, .)
+                0x00001084                __data_load_start = LOADADDR (.data)
+                0x000010b4                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008000bf        0x0
+.noinit         0x008000bd        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x008000bf                _end = .
+                0x008000bd                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -654,7 +650,7 @@ END GROUP
  .comment       0x00000030       0x31 MCAL/exti/external_interrupt.h.o
  .comment       0x00000030       0x31 MCAL/timer/timer.o
  .comment       0x00000030       0x31 SERVICE/sos/sos.o
- .comment       0x00000030       0x31 SERVICE/sos/sos_config.o
+ .comment       0x00000030       0x31 SERVICE/sos/sos_tasks.o
  .comment       0x00000030       0x31 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
  .comment       0x00000030       0x31 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
  .comment       0x00000030       0x31 STD_LIBRARIES/timer_manager/timer_manager.o
@@ -699,7 +695,7 @@ END GROUP
  .debug_aranges
                 0x000001b8       0x60 SERVICE/sos/sos.o
  .debug_aranges
-                0x00000218       0x18 SERVICE/sos/sos_config.o
+                0x00000218       0x18 SERVICE/sos/sos_tasks.o
  .debug_aranges
                 0x00000230       0x38 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
  .debug_aranges
@@ -712,56 +708,56 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2b1b
+.debug_info     0x00000000     0x2af4
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0x528 APP/app.o
- .debug_info    0x00000a0e      0x38a HAL/led/led.o
- .debug_info    0x00000d98      0x196 HAL/led/led_config.o
- .debug_info    0x00000f2e       0xc2 main.o
- .debug_info    0x00000ff0      0x474 MCAL/dio/dio.o
- .debug_info    0x00001464      0x456 MCAL/exti/external_interrupt.h.o
- .debug_info    0x000018ba      0x2e2 MCAL/timer/timer.o
- .debug_info    0x00001b9c      0x662 SERVICE/sos/sos.o
- .debug_info    0x000021fe      0x159 SERVICE/sos/sos_config.o
- .debug_info    0x00002357      0x2d9 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
- .debug_info    0x00002630      0x118 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
- .debug_info    0x00002748      0x2b9 STD_LIBRARIES/timer_manager/timer_manager.o
- .debug_info    0x00002a01      0x11a STD_LIBRARIES/timer_manager/timer_manger_config.o
+ .debug_info    0x000004e6      0x52b APP/app.o
+ .debug_info    0x00000a11      0x38a HAL/led/led.o
+ .debug_info    0x00000d9b      0x196 HAL/led/led_config.o
+ .debug_info    0x00000f31       0xc2 main.o
+ .debug_info    0x00000ff3      0x474 MCAL/dio/dio.o
+ .debug_info    0x00001467      0x456 MCAL/exti/external_interrupt.h.o
+ .debug_info    0x000018bd      0x2e2 MCAL/timer/timer.o
+ .debug_info    0x00001b9f      0x638 SERVICE/sos/sos.o
+ .debug_info    0x000021d7      0x159 SERVICE/sos/sos_tasks.o
+ .debug_info    0x00002330      0x2d9 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+ .debug_info    0x00002609      0x118 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
+ .debug_info    0x00002721      0x2b9 STD_LIBRARIES/timer_manager/timer_manager.o
+ .debug_info    0x000029da      0x11a STD_LIBRARIES/timer_manager/timer_manger_config.o
 
-.debug_abbrev   0x00000000      0xfff
+.debug_abbrev   0x00000000     0x1019
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_abbrev  0x000004a3      0x126 APP/app.o
- .debug_abbrev  0x000005c9      0x10d HAL/led/led.o
- .debug_abbrev  0x000006d6       0x7c HAL/led/led_config.o
- .debug_abbrev  0x00000752       0x65 main.o
- .debug_abbrev  0x000007b7       0xf2 MCAL/dio/dio.o
- .debug_abbrev  0x000008a9      0x153 MCAL/exti/external_interrupt.h.o
- .debug_abbrev  0x000009fc      0x104 MCAL/timer/timer.o
- .debug_abbrev  0x00000b00      0x1e3 SERVICE/sos/sos.o
- .debug_abbrev  0x00000ce3       0x7d SERVICE/sos/sos_config.o
- .debug_abbrev  0x00000d60       0xdc STD_LIBRARIES/ex_int_manger/ex_int_manger.o
- .debug_abbrev  0x00000e3c       0x6d STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
- .debug_abbrev  0x00000ea9       0xf1 STD_LIBRARIES/timer_manager/timer_manager.o
- .debug_abbrev  0x00000f9a       0x65 STD_LIBRARIES/timer_manager/timer_manger_config.o
+ .debug_abbrev  0x000004a3      0x140 APP/app.o
+ .debug_abbrev  0x000005e3      0x10d HAL/led/led.o
+ .debug_abbrev  0x000006f0       0x7c HAL/led/led_config.o
+ .debug_abbrev  0x0000076c       0x65 main.o
+ .debug_abbrev  0x000007d1       0xf2 MCAL/dio/dio.o
+ .debug_abbrev  0x000008c3      0x153 MCAL/exti/external_interrupt.h.o
+ .debug_abbrev  0x00000a16      0x104 MCAL/timer/timer.o
+ .debug_abbrev  0x00000b1a      0x1e3 SERVICE/sos/sos.o
+ .debug_abbrev  0x00000cfd       0x7d SERVICE/sos/sos_tasks.o
+ .debug_abbrev  0x00000d7a       0xdc STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+ .debug_abbrev  0x00000e56       0x6d STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
+ .debug_abbrev  0x00000ec3       0xf1 STD_LIBRARIES/timer_manager/timer_manager.o
+ .debug_abbrev  0x00000fb4       0x65 STD_LIBRARIES/timer_manager/timer_manger_config.o
 
-.debug_line     0x00000000     0x1d75
+.debug_line     0x00000000     0x1dbf
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116      0x254 APP/app.o
- .debug_line    0x0000036a      0x1b1 HAL/led/led.o
- .debug_line    0x0000051b       0x61 HAL/led/led_config.o
- .debug_line    0x0000057c       0x5d main.o
- .debug_line    0x000005d9      0x287 MCAL/dio/dio.o
- .debug_line    0x00000860      0x3f5 MCAL/exti/external_interrupt.h.o
- .debug_line    0x00000c55      0x716 MCAL/timer/timer.o
- .debug_line    0x0000136b      0x49a SERVICE/sos/sos.o
- .debug_line    0x00001805       0x74 SERVICE/sos/sos_config.o
- .debug_line    0x00001879      0x1a9 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
- .debug_line    0x00001a22       0x9a STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
- .debug_line    0x00001abc      0x1d3 STD_LIBRARIES/timer_manager/timer_manager.o
- .debug_line    0x00001c8f       0xe6 STD_LIBRARIES/timer_manager/timer_manger_config.o
+ .debug_line    0x00000116      0x295 APP/app.o
+ .debug_line    0x000003ab      0x1b1 HAL/led/led.o
+ .debug_line    0x0000055c       0x61 HAL/led/led_config.o
+ .debug_line    0x000005bd       0x5d main.o
+ .debug_line    0x0000061a      0x287 MCAL/dio/dio.o
+ .debug_line    0x000008a1      0x3f5 MCAL/exti/external_interrupt.h.o
+ .debug_line    0x00000c96      0x716 MCAL/timer/timer.o
+ .debug_line    0x000013ac      0x4a4 SERVICE/sos/sos.o
+ .debug_line    0x00001850       0x73 SERVICE/sos/sos_tasks.o
+ .debug_line    0x000018c3      0x1a9 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+ .debug_line    0x00001a6c       0x9a STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
+ .debug_line    0x00001b06      0x1d3 STD_LIBRARIES/timer_manager/timer_manager.o
+ .debug_line    0x00001cd9       0xe6 STD_LIBRARIES/timer_manager/timer_manger_config.o
 
 .debug_frame    0x00000000      0x5c8
  *(.debug_frame)
@@ -775,7 +771,7 @@ END GROUP
  .debug_frame   0x00000510       0x54 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
  .debug_frame   0x00000564       0x64 STD_LIBRARIES/timer_manager/timer_manager.o
 
-.debug_str      0x00000000     0x10d0
+.debug_str      0x00000000     0x10df
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_str     0x00000196      0x5cb APP/app.o
@@ -792,28 +788,28 @@ END GROUP
                                 0x4a0 (size before relaxing)
  .debug_str     0x00000ae7      0x1b6 MCAL/timer/timer.o
                                 0x36b (size before relaxing)
- .debug_str     0x00000c9d      0x2fe SERVICE/sos/sos.o
-                                0x6f4 (size before relaxing)
- .debug_str     0x00000f9b       0x2a SERVICE/sos/sos_config.o
-                                0x2af (size before relaxing)
- .debug_str     0x00000fc5       0x62 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+ .debug_str     0x00000c9d      0x30e SERVICE/sos/sos.o
+                                0x6ff (size before relaxing)
+ .debug_str     0x00000fab       0x29 SERVICE/sos/sos_tasks.o
+                                0x2ae (size before relaxing)
+ .debug_str     0x00000fd4       0x62 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
                                 0x3d3 (size before relaxing)
- .debug_str     0x00001027       0x36 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
+ .debug_str     0x00001036       0x36 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o
                                 0x2d6 (size before relaxing)
- .debug_str     0x0000105d       0x3e STD_LIBRARIES/timer_manager/timer_manager.o
+ .debug_str     0x0000106c       0x3e STD_LIBRARIES/timer_manager/timer_manager.o
                                 0x35f (size before relaxing)
- .debug_str     0x0000109b       0x35 STD_LIBRARIES/timer_manager/timer_manger_config.o
+ .debug_str     0x000010aa       0x35 STD_LIBRARIES/timer_manager/timer_manger_config.o
                                 0x2b1 (size before relaxing)
 
-.debug_loc      0x00000000     0x204b
+.debug_loc      0x00000000     0x2064
  *(.debug_loc)
  .debug_loc     0x00000000      0x342 HAL/led/led.o
  .debug_loc     0x00000342      0x496 MCAL/dio/dio.o
  .debug_loc     0x000007d8      0x77a MCAL/exti/external_interrupt.h.o
  .debug_loc     0x00000f52      0x6f2 MCAL/timer/timer.o
- .debug_loc     0x00001644      0x49f SERVICE/sos/sos.o
- .debug_loc     0x00001ae3      0x283 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
- .debug_loc     0x00001d66      0x2e5 STD_LIBRARIES/timer_manager/timer_manager.o
+ .debug_loc     0x00001644      0x4b8 SERVICE/sos/sos.o
+ .debug_loc     0x00001afc      0x283 STD_LIBRARIES/ex_int_manger/ex_int_manger.o
+ .debug_loc     0x00001d7f      0x2e5 STD_LIBRARIES/timer_manager/timer_manager.o
 
 .debug_macinfo
  *(.debug_macinfo)

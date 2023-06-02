@@ -20,7 +20,7 @@ MCAL\timer\timer.c
 
 SERVICE\sos\sos.c
 
-SERVICE\sos\sos_config.c
+SERVICE\sos\sos_tasks.c
 
 STD_LIBRARIES\ex_int_manger\ex_int_manger.c
 

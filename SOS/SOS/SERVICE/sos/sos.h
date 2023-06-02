@@ -23,14 +23,12 @@
 
 /***********************************section 4: The Global flag to run sos*****************************************/
 extern volatile uint8_t Start_Flag;
-extern volatile uint8_t u8_sg_sos_enable_flag;
 
 typedef  void (*Fptr_task_callBack_t)(void);
 
 /**********************************  section 5: Data Type Declarations  ******************************************/
 
 
-/*to be added in a different file */
 typedef enum{
 	SOS_E_NOK=0,
 	SOS_E_OK=1,
@@ -39,16 +37,7 @@ typedef enum{
 	SOS_ALREADY_INITIALIZED,
 	SOS_DATA_BASE_NOT_EXIST,
 	SOS_TIMER_E_NOK,
-	}enu_sos_status_t;
-
-
-
-typedef enum{
-	SOS_FLAG_NOT_INITIALIZED=0,
-	SOS_FLAG_INITIALIZED
-}enu_sos_init_status_t;	
-	
-	
+}enu_sos_status_t;
 
 
 typedef enum{
@@ -59,6 +48,7 @@ typedef enum{
 	TASK_TERMINATED_STATE,
 	TASK_INVALID_STATE,
 }enu_task_state_t;
+
 	
 /****************/		
 

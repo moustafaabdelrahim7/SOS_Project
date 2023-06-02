@@ -17,7 +17,7 @@ APP/app.d APP/app.o: ../APP/app.c ../APP/app.h \
  d:\new\ folder\sos_project\sos\sos\std_libraries\bit_math.h \
  d:\new\ folder\sos_project\sos\sos\mcal\dio\dio.h \
  d:\new\ folder\sos_project\sos\sos\mcal\exti\ext_int_private_reg.h \
- ../APP/../SERVICE/sos/sos_config.h ../APP/../SERVICE/sos/sos.h \
+ ../APP/../SERVICE/sos/sos_tasks.h ../APP/../SERVICE/sos/sos.h \
  ../APP/../HAL/led/led_config.h ../APP/../HAL/led/led.h \
  ../APP/../STD_LIBRARIES/ex_int_manger/ex_int_manger_config.h
 
@@ -61,7 +61,7 @@ d:\new\ folder\sos_project\sos\sos\mcal\dio\dio.h:
 
 d:\new\ folder\sos_project\sos\sos\mcal\exti\ext_int_private_reg.h:
 
-../APP/../SERVICE/sos/sos_config.h:
+../APP/../SERVICE/sos/sos_tasks.h:
 
 ../APP/../SERVICE/sos/sos.h:
 
