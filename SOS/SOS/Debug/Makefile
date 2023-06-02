@@ -59,7 +59,7 @@ C_SRCS +=  \
 ../MCAL/exti/external_interrupt.h.c \
 ../MCAL/timer/timer.c \
 ../SERVICE/sos/sos.c \
-../SERVICE/sos/sos_config.c \
+../SERVICE/sos/sos_tasks.c \
 ../STD_LIBRARIES/ex_int_manger/ex_int_manger.c \
 ../STD_LIBRARIES/ex_int_manger/ex_int_manger_config.c \
 ../STD_LIBRARIES/timer_manager/timer_manager.c \
@@ -82,7 +82,7 @@ MCAL/dio/dio.o \
 MCAL/exti/external_interrupt.h.o \
 MCAL/timer/timer.o \
 SERVICE/sos/sos.o \
-SERVICE/sos/sos_config.o \
+SERVICE/sos/sos_tasks.o \
 STD_LIBRARIES/ex_int_manger/ex_int_manger.o \
 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o \
 STD_LIBRARIES/timer_manager/timer_manager.o \
@@ -98,7 +98,7 @@ MCAL/dio/dio.o \
 MCAL/exti/external_interrupt.h.o \
 MCAL/timer/timer.o \
 SERVICE/sos/sos.o \
-SERVICE/sos/sos_config.o \
+SERVICE/sos/sos_tasks.o \
 STD_LIBRARIES/ex_int_manger/ex_int_manger.o \
 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.o \
 STD_LIBRARIES/timer_manager/timer_manager.o \
@@ -114,7 +114,7 @@ MCAL/dio/dio.d \
 MCAL/exti/external_interrupt.h.d \
 MCAL/timer/timer.d \
 SERVICE/sos/sos.d \
-SERVICE/sos/sos_config.d \
+SERVICE/sos/sos_tasks.d \
 STD_LIBRARIES/ex_int_manger/ex_int_manger.d \
 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.d \
 STD_LIBRARIES/timer_manager/timer_manager.d \
@@ -130,7 +130,7 @@ MCAL/dio/dio.d \
 MCAL/exti/external_interrupt.h.d \
 MCAL/timer/timer.d \
 SERVICE/sos/sos.d \
-SERVICE/sos/sos_config.d \
+SERVICE/sos/sos_tasks.d \
 STD_LIBRARIES/ex_int_manger/ex_int_manger.d \
 STD_LIBRARIES/ex_int_manger/ex_int_manger_config.d \
 STD_LIBRARIES/timer_manager/timer_manager.d \
@@ -213,7 +213,7 @@ SERVICE/sos/sos.o: ../SERVICE/sos/sos.c
 	@echo Finished building: $<
 	
 
-SERVICE/sos/sos_config.o: ../SERVICE/sos/sos_config.c
+SERVICE/sos/sos_tasks.o: ../SERVICE/sos/sos_tasks.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

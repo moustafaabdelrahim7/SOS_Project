@@ -199,10 +199,10 @@
     <Compile Include="SERVICE\sos\sos.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SERVICE\sos\sos_config.c">
+    <Compile Include="SERVICE\sos\sos_tasks.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SERVICE\sos\sos_config.h">
+    <Compile Include="SERVICE\sos\sos_tasks.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="STD_LIBRARIES\bit_math.h">

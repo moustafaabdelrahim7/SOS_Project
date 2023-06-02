@@ -11,28 +11,27 @@
 
 #include "../../MCAL/timer/timer_private_reg.h"
 
-static enu_sos_init_status_t enu_sg_sos_init_status = SOS_FLAG_NOT_INITIALIZED;
+/**************************************************Enums*********************************************************************************************/
+typedef enum{
+	SOS_FLAG_NOT_INITIALIZED=0,
+	SOS_FLAG_INITIALIZED
+}enu_sos_init_status_t;
 
+
+/*********************************************************************************************************************************************************/
+
+static enu_sos_init_status_t enu_sg_sos_init_status = SOS_FLAG_NOT_INITIALIZED;
 static str_task_control_data_t *strPtrs_tasks[SOS_TASKS_MAX_NUM];
 
 static volatile uint32_t u8_sg_sos_time_counter;
 static volatile uint32_t u8_sg_sos_time_counter_2_;
-
-static uint8_t flag =0;
-static uint8_t flag_2_ =0;
-
- volatile uint8_t u8_sg_sos_enable_flag = TRUE;
  
-
 static uint8_t u8_sg_sos_task_counter;
-
 static uint8_t u8_sg_sos_running_state_status = SOS_RUNNING_STATE_IS_FREE;
 
 volatile static uint32_t u8Arr_sg__of_taskCounters[SOS_TASKS_MAX_NUM]={0};
-
 volatile static  uint32_t uintu8_sg_sos_index_1;
 volatile static  uint32_t uintu8_sg_sos_index_2;
-
 volatile uint8_t Start_Flag=2;
 
 
@@ -180,13 +179,12 @@ enu_sos_status_t SOS_run (void)
 								}
 							}
 					}
-		
 			}
 			else
 			{
 				enu_l_sos_ret = SOS_E_NOK;
 			}
-			}
+		}
 	
 		else if (Start_Flag==2)
 		{
@@ -211,7 +209,7 @@ enu_sos_status_t SOS_disable (void)
 		}
 		else
 		{
-			u8_sg_sos_enable_flag = FALSE;
+			Start_Flag =2;
 		}
 		
 	}
@@ -224,7 +222,6 @@ enu_sos_status_t SOS_disable (void)
 
 /**************************************/
 
-/*we need to make sure that we don't access a null ptr*/
 enu_sos_status_t SOS_create_task (str_task_control_data_t *strPtr_task_control_data)
 {
 	enu_sos_status_t enu_l_sos_ret = SOS_E_OK;
@@ -232,7 +229,7 @@ enu_sos_status_t SOS_create_task (str_task_control_data_t *strPtr_task_control_d
 	if (strPtr_task_control_data->u8_task_id < SOS_TASKS_MAX_NUM)
 	{
 		if ((strPtr_task_control_data->Fptr_task_callBack!=NULL) && (strPtr_task_control_data)  &&
-		 enu_sg_sos_init_status==SOS_FLAG_INITIALIZED && strPtrs_tasks[strPtr_task_control_data->u8_task_id]->Fptr_task_callBack==NULL)
+		 (enu_sg_sos_init_status==SOS_FLAG_INITIALIZED) && (strPtrs_tasks[strPtr_task_control_data->u8_task_id]->Fptr_task_callBack==NULL))
 		{
 			strPtrs_tasks[strPtr_task_control_data->u8_task_id]                        =strPtr_task_control_data;
 		}
@@ -260,9 +257,8 @@ enu_sos_status_t SOS_modify_task (uint8_t u8_a_oldTask_id , str_task_control_dat
 {
 	enu_sos_status_t enu_l_sos_ret = SOS_E_OK;
 	uint8_t u8_l_task_index = ZERO_INIT;
-	if((SOS_FLAG_INITIALIZED==enu_sg_sos_init_status) && (strPtr_new_task_control_data))
+	if((SOS_FLAG_INITIALIZED==enu_sg_sos_init_status) && (strPtr_new_task_control_data) && (u8_a_oldTask_id<SOS_TASKS_MAX_NUM))
 	{
-	
 		 for(u8_l_task_index = ZERO_INIT;u8_l_task_index<SOS_TASKS_MAX_NUM;u8_l_task_index++)
 		 {
 			 if((u8_a_oldTask_id==strPtrs_tasks[u8_l_task_index]->u8_task_id) && (strPtrs_tasks[u8_l_task_index] != NULL))
@@ -280,9 +276,7 @@ enu_sos_status_t SOS_modify_task (uint8_t u8_a_oldTask_id , str_task_control_dat
 				 //do nothing
 			 }
 			
-		 }
-		/*we need to make sure that we have the id that being  modified*/ 
-		
+		 } 
 	}
 	else
 	{
@@ -292,7 +286,6 @@ enu_sos_status_t SOS_modify_task (uint8_t u8_a_oldTask_id , str_task_control_dat
 }
 
 /**************************************************/
-/*same comment as the previous one */
 enu_sos_status_t SOS_delete_task (uint8_t u8_a_Task_id)
 {
 	enu_sos_status_t enu_l_sos_ret = SOS_E_OK;
@@ -331,29 +324,29 @@ enu_sos_status_t SOS_delete_task (uint8_t u8_a_Task_id)
 static enu_sos_status_t init_theArrayOfIDs(void)
 {
 	enu_sos_status_t enu_l_sos_ret = SOS_E_OK;
-	uint8_t u8_l_task_index_1_ = ZERO_INIT;//be more descriptive 
-	uint8_t u8_l_task_index_2_ = ZERO_INIT;
-	uint8_t u8_l_task_index_3_ = ZERO_INIT;
+	uint8_t u8_l_task_compare_first_element = ZERO_INIT;//be more descriptive 
+	uint8_t u8_l_task_check_first_element = ZERO_INIT;
+	uint8_t u8_l_task_priority_id= ZERO_INIT;
 	uint8_t  u8_l_temp = ZERO_INIT;
 	if((SOS_FLAG_INITIALIZED==enu_sg_sos_init_status))
 	{
 	
-		for(u8_l_task_index_1_ = ZERO_INIT;u8_l_task_index_1_<SOS_TASKS_MAX_NUM;u8_l_task_index_1_++)
+		for(u8_l_task_compare_first_element = ZERO_INIT;u8_l_task_compare_first_element<SOS_TASKS_MAX_NUM;u8_l_task_compare_first_element++)
 		{
-			for(u8_l_task_index_2_ = u8_l_task_index_1_ + 1 ; u8_l_task_index_2_<SOS_TASKS_MAX_NUM ; u8_l_task_index_2_++)
+			for(u8_l_task_check_first_element = u8_l_task_compare_first_element + 1 ; u8_l_task_check_first_element<SOS_TASKS_MAX_NUM ; u8_l_task_check_first_element++)
 			{
 				
-				if((strPtrs_tasks[u8_l_task_index_1_ ]->u8_task_priority) < (strPtrs_tasks[u8_l_task_index_2_]->u8_task_priority))
+				if((strPtrs_tasks[u8_l_task_compare_first_element ]->u8_task_priority) < (strPtrs_tasks[u8_l_task_check_first_element]->u8_task_priority))
 				{
 				
-					u8Arr_sg_ID_of_taskPriorty[u8_l_task_index_3_] =  strPtrs_tasks[u8_l_task_index_1_]->u8_task_id;
-					u8_l_task_index_3_++;
+					u8Arr_sg_ID_of_taskPriorty[u8_l_task_priority_id] =  strPtrs_tasks[u8_l_task_compare_first_element]->u8_task_id;
+					u8_l_task_priority_id++;
 				}
-				else if((strPtrs_tasks[u8_l_task_index_1_ ]->u8_task_priority) > (strPtrs_tasks[u8_l_task_index_2_]->u8_task_priority))
+				else if((strPtrs_tasks[u8_l_task_compare_first_element ]->u8_task_priority) > (strPtrs_tasks[u8_l_task_check_first_element]->u8_task_priority))
 				{
 					
-					u8Arr_sg_ID_of_taskPriorty[u8_l_task_index_3_] = strPtrs_tasks[u8_l_task_index_2_]->u8_task_id;
-					u8_l_task_index_3_++;
+					u8Arr_sg_ID_of_taskPriorty[u8_l_task_priority_id] = strPtrs_tasks[u8_l_task_check_first_element]->u8_task_id;
+					u8_l_task_priority_id++;
 				}
 				
 				else

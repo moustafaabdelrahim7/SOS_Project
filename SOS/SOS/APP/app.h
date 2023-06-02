@@ -18,7 +18,7 @@
 extern volatile uint8_t Start_Flag;
 
 
-void APP_init(void);
+Std_ReturnType APP_init();
 
 void APP_start(void);
 
